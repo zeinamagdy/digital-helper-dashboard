@@ -6,6 +6,11 @@
 
 An inclusive web application designed for Berlin's senior community. This project focuses on **Accessibility (A11y)** by providing a "Senior Mode" that transforms the complex digital interface into a simplified, high-contrast experience.
 
+### ⌨️ Keyboard & Tab Navigation
+I optimized the "vibe" for users who don't use a mouse:
+- **Custom Focus States:** Replaced the default browser outline with a custom `yellow-400` highlighter glow.
+- **A11y Tab-Index:** Every card is keyboard-accessible using `tabIndex`, allowing seniors to navigate using simplified input devices or assistive switches.
+
 ---
 
 ## 🚀 Concept
@@ -36,6 +41,15 @@ The app uses a **Single Source of Truth** pattern. By wrapping the application i
 // Example of the clean usage in components
 const { isSeniorMode } = useSettings();
 <div className={isSeniorMode ? 'bg-black text-yellow-400' : 'bg-white'}>
+
+🚀 Development Approach: Vibe Coding
+This project was built using a Vibe Coding workflow. Instead of getting bogged down in repetitive syntax, I focused on:
+
+High-Level Architecture: Designing a scalable Context API for global accessibility.
+
+Iterative Prompting: Collaborating with AI to rapidly prototype the "Senior Mode" logic.
+
+User-Centric Refinement: Fine-tuning the "vibe" of the UI—ensuring the transitions, contrast, and spacing feel right for the target audience.
 
 🏃 How to Run
 Clone the repo: git clone 

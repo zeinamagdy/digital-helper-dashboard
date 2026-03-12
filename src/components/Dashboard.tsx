@@ -45,17 +45,27 @@ const Dashboard = () => {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div
+        className={
+          "grid grid-cols-1 md:grid-cols-2 " +
+          `${isSeniorMode ? "gap-12" : "gap-8"}`
+        }
+      >
         {menuItems.map((item) => (
           <button
             key={item.id}
             className={`
-              flex flex-col items-center justify-center  p-10 rounded-[40px] transition-all
+              flex flex-col items-center justify-center  p-10  
+              rounded-[2.5rem] transition-all duration-300 outline-none
               ${
                 isSeniorMode
-                  ? "border-[6px] border-senior-yellow  bg-black text-senior-yellow hover:bg-zinc-900"
+                  ? "border-[6px] border-senior-yellow  bg-black text-senior-yellow hover:bg-zinc-900 shadow-[0_0_25px_rgba(250,204,21,0.4)] hover:shadow-[0_0_35px_rgba(250,204,21,0.6)] scale-[1.02] mb-4"
                   : `${item.color} text-white shadow-xl hover:scale-105 active:scale-95`
               }
+              focus:border-yellow-400 
+              focus:shadow-[0_0_30px_rgba(250,204,21,0.6)] 
+              focus:scale-[1.03]
+              active:scale-95
             `}
           >
             {item.icon}
