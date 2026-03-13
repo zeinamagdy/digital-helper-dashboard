@@ -1,9 +1,12 @@
 import { Phone, MessageCircle, CloudSun, LifeBuoy } from "lucide-react";
 import { useSettings } from "../context/SettingsContext";
 import { playClick } from "../helpers/playClick";
+import WeatherWidget from "./WeatherWidget";
+import { useState } from "react";
 
 const Dashboard = () => {
   const { isSeniorMode } = useSettings();
+  const [showWeather, setShowWeather] = useState(false);
 
   // Define grid items to keep the JSX clean
   const menuItems = [
@@ -25,7 +28,7 @@ const Dashboard = () => {
       label: "WETTER",
       icon: <CloudSun size={isSeniorMode ? 80 : 48} />,
       color: "bg-orange-500",
-      action: () => alert("Das Wetter in Berlin: 18°C ☀️"),
+      action: () => setShowWeather(true),
     },
     {
       id: 4,
@@ -43,6 +46,23 @@ const Dashboard = () => {
     playClick(); // 🔊 Play sound immediately on click
     itemAction(); // Then execute the specific logic for the item (e.g., call, alert, etc.)
   };
+  if (showWeather) {
+    return (
+      <div className="p-6 min-h-screen bg-black flex flex-col items-center">
+        <button
+          onClick={() => {
+            setShowWeather(false);
+            playClick();
+          }}
+          className="mb-8 text-yellow-400 text-2xl font-bold p-4 border-4 border-yellow-400 rounded-xl w-full"
+        >
+          ← ZURÜCK (BACK)
+        </button>
+
+        <WeatherWidget />
+      </div>
+    );
+  }
   return (
     <div className={`${isSeniorMode ? "max-w-full" : "max-w-4xl"} p-6 mx-auto`}>
       <header className="mb-10 text-center">
